@@ -5,74 +5,79 @@ namespace DotNetBungieAPI.Service.Abstractions.ApiAccess;
 
 public interface IGroupV2Api
 {
-    Task<BungieResponse<Dictionary<int, string>>> GetAvailableAvatars(CancellationToken cancellationToken = default);
+    Task<BungieResponse<Dictionary<int, string>>> GetAvailableAvatars(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default);
 
-    Task<BungieResponse<Models.Config.GroupTheme[]>> GetAvailableThemes(CancellationToken cancellationToken = default);
+    Task<BungieResponse<Models.Config.GroupTheme[]>> GetAvailableThemes(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default);
 
     Task<BungieResponse<bool>> GetUserClanInviteSetting(
         Models.BungieMembershipType mType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.GroupsV2.GroupV2Card[]>> GetRecommendedGroups(
         Models.GroupsV2.GroupDateRange createDateRange,
         Models.GroupsV2.GroupType groupType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.GroupsV2.GroupSearchResponse>> GroupSearch(
         Models.GroupsV2.GroupQuery requestBody,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.GroupsV2.GroupResponse>> GetGroup(
         long groupId,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.GroupsV2.GroupResponse>> GetGroupByName(
         string groupName,
         Models.GroupsV2.GroupType groupType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.GroupsV2.GroupResponse>> GetGroupByNameV2(
         Models.GroupsV2.GroupNameSearchRequest requestBody,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.GroupsV2.GroupOptionalConversation[]>> GetGroupOptionalConversations(
         long groupId,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<int>> EditGroup(
         long groupId,
         Models.GroupsV2.GroupEditAction requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<int>> EditClanBanner(
         long groupId,
         Models.GroupsV2.ClanBanner requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<int>> EditFounderOptions(
         long groupId,
         Models.GroupsV2.GroupOptionsEditAction requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<long>> AddOptionalConversation(
         long groupId,
         Models.GroupsV2.GroupOptionalConversationAddRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -80,7 +85,7 @@ public interface IGroupV2Api
         long conversationId,
         long groupId,
         Models.GroupsV2.GroupOptionalConversationEditRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -89,12 +94,14 @@ public interface IGroupV2Api
         long groupId,
         Models.GroupsV2.RuntimeGroupMemberType memberType,
         string nameSearch,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(
         int currentpage,
         long groupId,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -103,7 +110,7 @@ public interface IGroupV2Api
         long membershipId,
         Models.BungieMembershipType membershipType,
         Models.GroupsV2.RuntimeGroupMemberType memberType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -111,7 +118,7 @@ public interface IGroupV2Api
         long groupId,
         long membershipId,
         Models.BungieMembershipType membershipType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -120,7 +127,7 @@ public interface IGroupV2Api
         long membershipId,
         Models.BungieMembershipType membershipType,
         Models.GroupsV2.GroupBanRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -128,21 +135,21 @@ public interface IGroupV2Api
         long groupId,
         long membershipId,
         Models.BungieMembershipType membershipType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.SearchResultOfGroupBan>> GetBannedMembersOfGroup(
         int currentpage,
         long groupId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.SearchResultOfGroupEditHistory>> GetGroupEditHistory(
         int currentpage,
         long groupId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -150,41 +157,42 @@ public interface IGroupV2Api
         long founderIdNew,
         long groupId,
         Models.BungieMembershipType membershipType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.SearchResultOfGroupMemberApplication>> GetPendingMemberships(
         int currentpage,
         long groupId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(
         int currentpage,
         long groupId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.Entities.EntityActionResult[]>> ApproveAllPending(
         long groupId,
         Models.GroupsV2.GroupApplicationRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.Entities.EntityActionResult[]>> DenyAllPending(
         long groupId,
         Models.GroupsV2.GroupApplicationRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.Entities.EntityActionResult[]>> ApprovePendingForList(
         long groupId,
         Models.GroupsV2.GroupApplicationListRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -193,14 +201,14 @@ public interface IGroupV2Api
         long membershipId,
         Models.BungieMembershipType membershipType,
         Models.GroupsV2.GroupApplicationRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.Entities.EntityActionResult[]>> DenyPendingForList(
         long groupId,
         Models.GroupsV2.GroupApplicationListRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -209,6 +217,7 @@ public interface IGroupV2Api
         Models.GroupsV2.GroupType groupType,
         long membershipId,
         Models.BungieMembershipType membershipType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -216,6 +225,7 @@ public interface IGroupV2Api
         Models.GroupsV2.GroupType groupType,
         long membershipId,
         Models.BungieMembershipType membershipType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -224,6 +234,7 @@ public interface IGroupV2Api
         Models.GroupsV2.GroupType groupType,
         long membershipId,
         Models.BungieMembershipType membershipType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -232,7 +243,7 @@ public interface IGroupV2Api
         long membershipId,
         Models.BungieMembershipType membershipType,
         Models.GroupsV2.GroupApplicationRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -240,7 +251,7 @@ public interface IGroupV2Api
         long groupId,
         long membershipId,
         Models.BungieMembershipType membershipType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 

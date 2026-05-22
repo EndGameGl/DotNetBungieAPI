@@ -36,7 +36,7 @@ public class CSharpExtendedMethodGroupGenerator : MethodGroupGeneratorBase
             {
                 await WriteLineAsync(
                     """
-                    (CancellationToken cancellationToken = default);
+                    (AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default);
                     """
                 );
             }
@@ -66,10 +66,7 @@ public class CSharpExtendedMethodGroupGenerator : MethodGroupGeneratorBase
                     parameters.Add($"{Indent}{Indent}{method.RequestBody.Content["application/json"].Schema.GetCSharpType("Models")} requestBody");
                 }
 
-                if (method.Security is { Length: > 0 })
-                {
-                    parameters.Add($"{Indent}{Indent}AuthorizationTokenData authorizationToken");
-                }
+                parameters.Add($"{Indent}{Indent}AuthorizationTokenData? authorizationToken = null");
 
                 parameters.Add($"{Indent}{Indent}CancellationToken cancellationToken = default");
 

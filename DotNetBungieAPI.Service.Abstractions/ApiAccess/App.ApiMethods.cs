@@ -9,10 +9,10 @@ public interface IAppApi
         int applicationId,
         DateTime end,
         DateTime start,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
-    Task<BungieResponse<Models.Applications.Application[]>> GetBungieApplications(CancellationToken cancellationToken = default);
+    Task<BungieResponse<Models.Applications.Application[]>> GetBungieApplications(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default);
 
 }

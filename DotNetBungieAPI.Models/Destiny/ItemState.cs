@@ -31,5 +31,10 @@ public enum ItemState : int
     /// <summary>
     ///     If this bit is set, the item has a 'highlighted' objective. You may want to represent this with an orange-red icon border color.
     /// </summary>
-    HighlightedObjective = 16
+    HighlightedObjective = 16,
+
+    /// <summary>
+    ///     If this bit is set, the item has been 'enhanced' by the player.
+    /// </summary>
+    Enhanced = 32
 }

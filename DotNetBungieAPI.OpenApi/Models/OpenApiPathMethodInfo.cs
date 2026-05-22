@@ -32,6 +32,9 @@ public class OpenApiPathMethodInfo
     [JsonPropertyName("x-preview")]
     public bool? IsPreview { get; init; }
 
+    [JsonPropertyName("x-documentation-attributes")]
+    public Dictionary<string, string>? DocumentationAttributes { get; init; }
+
     public IEnumerable<OpenApiPathMethodParameterInfo> GetPathParameters() => Parameters.Where(x => x is { In: "path" });
 
     public IEnumerable<OpenApiPathMethodParameterInfo> GetQueryParameters() => Parameters.Where(x => x is { In: "query" });

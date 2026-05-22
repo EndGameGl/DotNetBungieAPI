@@ -15,7 +15,7 @@ public class CSharpExtendedImplMethodGroupGenerator : MethodGroupGeneratorBase
     public override async Task GenerateMethodGroupAsync(string groupName, (string ApiPath, OpenApiPath ApiPathInfo)[] methods)
     {
         await WriteLineAsync(
-            """
+            $$"""
             using System.IO;
             using System.Threading;
             using System.Threading.Tasks;
@@ -25,32 +25,27 @@ public class CSharpExtendedImplMethodGroupGenerator : MethodGroupGeneratorBase
             using DotNetBungieAPI.Models.Exceptions;
             using DotNetBungieAPI.Service.Abstractions;
             using DotNetBungieAPI.Service.Abstractions.ApiAccess;
+
+            {{NameSpace}}
+
+            internal sealed class {{groupName}}Api : I{{groupName}}Api
+            {
+                private readonly IBungieClientConfiguration _configuration;
+                private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
+                private readonly IBungieNetJsonSerializer _serializer;
+
+                public {{groupName}}Api(
+                    IBungieClientConfiguration configuration,
+                    IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
+                    IBungieNetJsonSerializer serializer
+                )
+                {
+                    _configuration = configuration;
+                    _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
+                    _serializer = serializer;
+                }
             """
         );
-        await WriteLineAsync();
-
-        await WriteLineAsync(NameSpace);
-        await WriteLineAsync();
-
-        await WriteLineAsync($"internal sealed class {groupName}Api : I{groupName}Api");
-        await WriteLineAsync('{');
-
-        await WriteLineAsync($"{Indent}private readonly IBungieClientConfiguration _configuration;");
-        await WriteLineAsync($"{Indent}private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;");
-        await WriteLineAsync($"{Indent}private readonly IBungieNetJsonSerializer _serializer;");
-
-        await WriteLineAsync();
-
-        await WriteLineAsync($"{Indent}public {groupName}Api(");
-        await WriteLineAsync($"{Indent}{Indent}IBungieClientConfiguration configuration,");
-        await WriteLineAsync($"{Indent}{Indent}IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,");
-        await WriteLineAsync($"{Indent}{Indent}IBungieNetJsonSerializer serializer");
-        await WriteLineAsync($"{Indent})");
-        await WriteLineAsync($"{Indent}{{");
-        await WriteLineAsync($"{Indent}{Indent}_configuration = _configuration;");
-        await WriteLineAsync($"{Indent}{Indent}_dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;");
-        await WriteLineAsync($"{Indent}{Indent}_serializer = serializer;");
-        await WriteLineAsync($"{Indent}}}");
 
         await WriteLineAsync();
 
@@ -75,10 +70,7 @@ public class CSharpExtendedImplMethodGroupGenerator : MethodGroupGeneratorBase
                 await WriteParameterComment(true, "requestBody", "Request body");
             }
 
-            if (method.Security is { Length: > 0 })
-            {
-                await WriteParameterComment(true, "authorizationToken", "Authorization information");
-            }
+            await WriteParameterComment(true, "authorizationToken", "Authorization information");
 
             await WriteParameterComment(true, "cancellationToken", "Method cancellation token");
 
@@ -90,7 +82,7 @@ public class CSharpExtendedImplMethodGroupGenerator : MethodGroupGeneratorBase
             {
                 await WriteLineAsync(
                     """
-                    (CancellationToken cancellationToken = default)
+                    (AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
                     """
                 );
                 await WriteLineAsync($"{Indent}{{");
@@ -125,10 +117,7 @@ public class CSharpExtendedImplMethodGroupGenerator : MethodGroupGeneratorBase
                     parameters.Add($"{Indent}{Indent}{method.RequestBody.Content["application/json"].Schema.GetCSharpType("Models")} requestBody");
                 }
 
-                if (method.Security is { Length: > 0 })
-                {
-                    parameters.Add($"{Indent}{Indent}AuthorizationTokenData authorizationToken");
-                }
+                parameters.Add($"{Indent}{Indent}AuthorizationTokenData? authorizationToken = null");
 
                 parameters.Add($"{Indent}{Indent}CancellationToken cancellationToken = default");
 
@@ -180,7 +169,7 @@ public class CSharpExtendedImplMethodGroupGenerator : MethodGroupGeneratorBase
                 $"""
                 {Indent}{Indent}return await _dotNetBungieApiHttpClient.{methodPrefix}BungieNetPlatform<{responseCSharpType}>("{path}", cancellationToken{(
                     hasRequestBody ? ", stream" : string.Empty
-                )}{(methodInfo.Security is { Length: > 0 } ? ", authToken: authorizationToken?.AccessToken" : string.Empty)});
+                )}, authToken: authorizationToken?.AccessToken);
                 """
             );
         }
@@ -239,7 +228,7 @@ public class CSharpExtendedImplMethodGroupGenerator : MethodGroupGeneratorBase
                 $"""
                  {Indent}{Indent}return await _dotNetBungieApiHttpClient.{methodPrefix}BungieNetPlatform<{responseCSharpType}>(url, cancellationToken{(
                     hasRequestBody ? ", content: stream" : string.Empty
-                )}{(methodInfo.Security is { Length: > 0 } ? ", authToken: authorizationToken?.AccessToken" : string.Empty)});
+                )}, authToken: authorizationToken?.AccessToken);
                  """
             );
         }

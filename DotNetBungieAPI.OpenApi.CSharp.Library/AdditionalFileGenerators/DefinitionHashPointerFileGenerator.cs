@@ -19,7 +19,7 @@ public class DefinitionHashPointerFileGenerator : AdditionalFileGenerator
         #endif
         public readonly struct DefinitionHashPointer<TDefinition>
             : IEquatable<DefinitionHashPointer<TDefinition>>
-            where TDefinition : IDestinyDefinition
+            where TDefinition : class, IDestinyDefinition
         {
             /// <summary>
             ///     <inheritdoc>

@@ -9,6 +9,7 @@ public interface ICommunityContentApi
         Models.Forum.ForumTopicsCategoryFiltersEnum mediaFilter,
         int page,
         Models.Forum.CommunityContentSortMode sort,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 

@@ -22,7 +22,7 @@ internal sealed class GroupV2Api : IGroupV2Api
         IBungieNetJsonSerializer serializer
     )
     {
-        _configuration = _configuration;
+        _configuration = configuration;
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;
     }
@@ -30,19 +30,21 @@ internal sealed class GroupV2Api : IGroupV2Api
     /// <summary>
     ///     Returns a list of all available group avatars for the signed-in user.
     /// </summary>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
-    public async Task<BungieResponse<Dictionary<int, string>>> GetAvailableAvatars(CancellationToken cancellationToken = default)
+    public async Task<BungieResponse<Dictionary<int, string>>> GetAvailableAvatars(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
     {
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<int, string>>("/GroupV2/GetAvailableAvatars/", cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<int, string>>("/GroupV2/GetAvailableAvatars/", cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Returns a list of all available group themes.
     /// </summary>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
-    public async Task<BungieResponse<Models.Config.GroupTheme[]>> GetAvailableThemes(CancellationToken cancellationToken = default)
+    public async Task<BungieResponse<Models.Config.GroupTheme[]>> GetAvailableThemes(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
     {
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Config.GroupTheme[]>("/GroupV2/GetAvailableThemes/", cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Config.GroupTheme[]>("/GroupV2/GetAvailableThemes/", cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -53,7 +55,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<bool>> GetUserClanInviteSetting(
         Models.BungieMembershipType mType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -77,7 +79,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<Models.GroupsV2.GroupV2Card[]>> GetRecommendedGroups(
         Models.GroupsV2.GroupDateRange createDateRange,
         Models.GroupsV2.GroupType groupType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -95,9 +97,11 @@ internal sealed class GroupV2Api : IGroupV2Api
     ///     Search for Groups.
     /// </summary>
     /// <param name="requestBody">Request body</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.GroupsV2.GroupSearchResponse>> GroupSearch(
         Models.GroupsV2.GroupQuery requestBody,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -105,16 +109,18 @@ internal sealed class GroupV2Api : IGroupV2Api
         await _serializer.SerializeAsync(stream, requestBody);
         stream.Position = 0;
 
-        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<Models.GroupsV2.GroupSearchResponse>("/GroupV2/Search/", cancellationToken, stream);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<Models.GroupsV2.GroupSearchResponse>("/GroupV2/Search/", cancellationToken, stream, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Get information about a specific group of the given ID.
     /// </summary>
     /// <param name="groupId">Requested group's id.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.GroupsV2.GroupResponse>> GetGroup(
         long groupId,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -122,7 +128,7 @@ internal sealed class GroupV2Api : IGroupV2Api
             .GetBuilder(cancellationToken)
             .Append($"/GroupV2/{groupId}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GroupsV2.GroupResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GroupsV2.GroupResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -130,10 +136,12 @@ internal sealed class GroupV2Api : IGroupV2Api
     /// </summary>
     /// <param name="groupName">Exact name of the group to find.</param>
     /// <param name="groupType">Type of group to find.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.GroupsV2.GroupResponse>> GetGroupByName(
         string groupName,
         Models.GroupsV2.GroupType groupType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -141,16 +149,18 @@ internal sealed class GroupV2Api : IGroupV2Api
             .GetBuilder(cancellationToken)
             .Append($"/GroupV2/Name/{groupName}/{groupType}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GroupsV2.GroupResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GroupsV2.GroupResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Get information about a specific group with the given name and type. The POST version.
     /// </summary>
     /// <param name="requestBody">Request body</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.GroupsV2.GroupResponse>> GetGroupByNameV2(
         Models.GroupsV2.GroupNameSearchRequest requestBody,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -158,16 +168,18 @@ internal sealed class GroupV2Api : IGroupV2Api
         await _serializer.SerializeAsync(stream, requestBody);
         stream.Position = 0;
 
-        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<Models.GroupsV2.GroupResponse>("/GroupV2/NameV2/", cancellationToken, stream);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<Models.GroupsV2.GroupResponse>("/GroupV2/NameV2/", cancellationToken, stream, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Gets a list of available optional conversation channels and their settings.
     /// </summary>
     /// <param name="groupId">Requested group's id.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.GroupsV2.GroupOptionalConversation[]>> GetGroupOptionalConversations(
         long groupId,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -175,7 +187,7 @@ internal sealed class GroupV2Api : IGroupV2Api
             .GetBuilder(cancellationToken)
             .Append($"/GroupV2/{groupId}/OptionalConversations/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GroupsV2.GroupOptionalConversation[]>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GroupsV2.GroupOptionalConversation[]>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -188,7 +200,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<int>> EditGroup(
         long groupId,
         Models.GroupsV2.GroupEditAction requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -216,7 +228,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<int>> EditClanBanner(
         long groupId,
         Models.GroupsV2.ClanBanner requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -244,7 +256,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<int>> EditFounderOptions(
         long groupId,
         Models.GroupsV2.GroupOptionsEditAction requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -272,7 +284,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<long>> AddOptionalConversation(
         long groupId,
         Models.GroupsV2.GroupOptionalConversationAddRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -302,7 +314,7 @@ internal sealed class GroupV2Api : IGroupV2Api
         long conversationId,
         long groupId,
         Models.GroupsV2.GroupOptionalConversationEditRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -327,12 +339,14 @@ internal sealed class GroupV2Api : IGroupV2Api
     /// <param name="groupId">The ID of the group.</param>
     /// <param name="memberType">Filter out other member types. Use None for all members.</param>
     /// <param name="nameSearch">The name fragment upon which a search should be executed for members with matching display or unique names.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.SearchResultOfGroupMember>> GetMembersOfGroup(
         int currentpage,
         long groupId,
         Models.GroupsV2.RuntimeGroupMemberType memberType,
         string nameSearch,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -342,7 +356,7 @@ internal sealed class GroupV2Api : IGroupV2Api
             .AddQueryParam("memberType", (int)memberType)
             .AddQueryParam("nameSearch", nameSearch)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.SearchResultOfGroupMember>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.SearchResultOfGroupMember>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -350,10 +364,12 @@ internal sealed class GroupV2Api : IGroupV2Api
     /// </summary>
     /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 items per page.</param>
     /// <param name="groupId">The ID of the group.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(
         int currentpage,
         long groupId,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -361,7 +377,7 @@ internal sealed class GroupV2Api : IGroupV2Api
             .GetBuilder(cancellationToken)
             .Append($"/GroupV2/{groupId}/AdminsAndFounder/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.SearchResultOfGroupMember>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.SearchResultOfGroupMember>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -378,7 +394,7 @@ internal sealed class GroupV2Api : IGroupV2Api
         long membershipId,
         Models.BungieMembershipType membershipType,
         Models.GroupsV2.RuntimeGroupMemberType memberType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -404,7 +420,7 @@ internal sealed class GroupV2Api : IGroupV2Api
         long groupId,
         long membershipId,
         Models.BungieMembershipType membershipType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -432,7 +448,7 @@ internal sealed class GroupV2Api : IGroupV2Api
         long membershipId,
         Models.BungieMembershipType membershipType,
         Models.GroupsV2.GroupBanRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -462,7 +478,7 @@ internal sealed class GroupV2Api : IGroupV2Api
         long groupId,
         long membershipId,
         Models.BungieMembershipType membershipType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -486,7 +502,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<Models.SearchResultOfGroupBan>> GetBannedMembersOfGroup(
         int currentpage,
         long groupId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -510,7 +526,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<Models.SearchResultOfGroupEditHistory>> GetGroupEditHistory(
         int currentpage,
         long groupId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -530,11 +546,13 @@ internal sealed class GroupV2Api : IGroupV2Api
     /// <param name="founderIdNew">The new founder for this group. Must already be a group admin.</param>
     /// <param name="groupId">The target group id.</param>
     /// <param name="membershipType">Membership type of the provided founderIdNew.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<bool>> AbdicateFoundership(
         long founderIdNew,
         long groupId,
         Models.BungieMembershipType membershipType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -542,7 +560,7 @@ internal sealed class GroupV2Api : IGroupV2Api
             .GetBuilder(cancellationToken)
             .Append($"/GroupV2/{groupId}/Admin/AbdicateFoundership/{membershipType}/{founderIdNew}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -555,7 +573,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<Models.SearchResultOfGroupMemberApplication>> GetPendingMemberships(
         int currentpage,
         long groupId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -579,7 +597,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<Models.SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(
         int currentpage,
         long groupId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -603,7 +621,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<Models.Entities.EntityActionResult[]>> ApproveAllPending(
         long groupId,
         Models.GroupsV2.GroupApplicationRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -631,7 +649,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<Models.Entities.EntityActionResult[]>> DenyAllPending(
         long groupId,
         Models.GroupsV2.GroupApplicationRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -659,7 +677,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<Models.Entities.EntityActionResult[]>> ApprovePendingForList(
         long groupId,
         Models.GroupsV2.GroupApplicationListRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -691,7 +709,7 @@ internal sealed class GroupV2Api : IGroupV2Api
         long membershipId,
         Models.BungieMembershipType membershipType,
         Models.GroupsV2.GroupApplicationRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -719,7 +737,7 @@ internal sealed class GroupV2Api : IGroupV2Api
     public async Task<BungieResponse<Models.Entities.EntityActionResult[]>> DenyPendingForList(
         long groupId,
         Models.GroupsV2.GroupApplicationListRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -744,12 +762,14 @@ internal sealed class GroupV2Api : IGroupV2Api
     /// <param name="groupType">Type of group the supplied member founded.</param>
     /// <param name="membershipId">Membership ID to for which to find founded groups.</param>
     /// <param name="membershipType">Membership type of the supplied membership ID.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.GroupsV2.GetGroupsForMemberResponse>> GetGroupsForMember(
         Models.GroupsV2.GroupsForMemberFilter filter,
         Models.GroupsV2.GroupType groupType,
         long membershipId,
         Models.BungieMembershipType membershipType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -757,7 +777,7 @@ internal sealed class GroupV2Api : IGroupV2Api
             .GetBuilder(cancellationToken)
             .Append($"/GroupV2/User/{membershipType}/{membershipId}/{filter}/{groupType}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GroupsV2.GetGroupsForMemberResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GroupsV2.GetGroupsForMemberResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -766,11 +786,13 @@ internal sealed class GroupV2Api : IGroupV2Api
     /// <param name="groupType">Type of group the supplied member founded.</param>
     /// <param name="membershipId">Membership ID to for which to find founded groups.</param>
     /// <param name="membershipType">Membership type of the supplied membership ID.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.GroupsV2.GroupMembershipSearchResponse>> RecoverGroupForFounder(
         Models.GroupsV2.GroupType groupType,
         long membershipId,
         Models.BungieMembershipType membershipType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -778,7 +800,7 @@ internal sealed class GroupV2Api : IGroupV2Api
             .GetBuilder(cancellationToken)
             .Append($"/GroupV2/Recover/{membershipType}/{membershipId}/{groupType}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GroupsV2.GroupMembershipSearchResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GroupsV2.GroupMembershipSearchResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -788,12 +810,14 @@ internal sealed class GroupV2Api : IGroupV2Api
     /// <param name="groupType">Type of group the supplied member applied.</param>
     /// <param name="membershipId">Membership ID to for which to find applied groups.</param>
     /// <param name="membershipType">Membership type of the supplied membership ID.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.GroupsV2.GroupPotentialMembershipSearchResponse>> GetPotentialGroupsForMember(
         Models.GroupsV2.GroupPotentialMemberStatus filter,
         Models.GroupsV2.GroupType groupType,
         long membershipId,
         Models.BungieMembershipType membershipType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -801,7 +825,7 @@ internal sealed class GroupV2Api : IGroupV2Api
             .GetBuilder(cancellationToken)
             .Append($"/GroupV2/User/Potential/{membershipType}/{membershipId}/{filter}/{groupType}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GroupsV2.GroupPotentialMembershipSearchResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GroupsV2.GroupPotentialMembershipSearchResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -818,7 +842,7 @@ internal sealed class GroupV2Api : IGroupV2Api
         long membershipId,
         Models.BungieMembershipType membershipType,
         Models.GroupsV2.GroupApplicationRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -848,7 +872,7 @@ internal sealed class GroupV2Api : IGroupV2Api
         long groupId,
         long membershipId,
         Models.BungieMembershipType membershipType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {

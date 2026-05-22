@@ -22,7 +22,7 @@ internal sealed class ForumApi : IForumApi
         IBungieNetJsonSerializer serializer
     )
     {
-        _configuration = _configuration;
+        _configuration = configuration;
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;
     }
@@ -38,6 +38,7 @@ internal sealed class ForumApi : IForumApi
     /// <param name="quickDate">A date filter.</param>
     /// <param name="sort">The sort mode.</param>
     /// <param name="tagstring">The tags to search, if any.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Forum.PostSearchResponse>> GetTopicsPaged(
         Models.Forum.ForumTopicsCategoryFiltersEnum categoryFilter,
@@ -48,6 +49,7 @@ internal sealed class ForumApi : IForumApi
         Models.Forum.ForumTopicsSortEnum sort,
         string locales,
         string tagstring,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -57,7 +59,7 @@ internal sealed class ForumApi : IForumApi
             .AddQueryParam("locales", locales)
             .AddQueryParam("tagstring", tagstring)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -68,6 +70,7 @@ internal sealed class ForumApi : IForumApi
     /// <param name="page">Zero base page</param>
     /// <param name="quickDate">The date filter.</param>
     /// <param name="sort">The sort mode.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Forum.PostSearchResponse>> GetCoreTopicsPaged(
         Models.Forum.ForumTopicsCategoryFiltersEnum categoryFilter,
@@ -75,6 +78,7 @@ internal sealed class ForumApi : IForumApi
         Models.Forum.ForumTopicsQuickDateEnum quickDate,
         Models.Forum.ForumTopicsSortEnum sort,
         string locales,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -83,7 +87,7 @@ internal sealed class ForumApi : IForumApi
             .Append($"/Forum/GetCoreTopicsPaged/{page}/{sort}/{quickDate}/{categoryFilter}/")
             .AddQueryParam("locales", locales)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -97,6 +101,7 @@ internal sealed class ForumApi : IForumApi
     /// <param name="rootThreadMode"></param>
     /// <param name="showbanned">If this value is not null or empty, banned posts are requested to be returned</param>
     /// <param name="sortMode"></param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Forum.PostSearchResponse>> GetPostsThreadedPaged(
         bool getParentPost,
@@ -107,6 +112,7 @@ internal sealed class ForumApi : IForumApi
         bool rootThreadMode,
         Models.Forum.ForumPostSortEnum sortMode,
         string showbanned,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -115,7 +121,7 @@ internal sealed class ForumApi : IForumApi
             .Append($"/Forum/GetPostsThreadedPaged/{parentPostId}/{page}/{pageSize}/{replySize}/{getParentPost}/{rootThreadMode}/{sortMode}/")
             .AddQueryParam("showbanned", showbanned)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -128,6 +134,7 @@ internal sealed class ForumApi : IForumApi
     /// <param name="rootThreadMode"></param>
     /// <param name="showbanned">If this value is not null or empty, banned posts are requested to be returned</param>
     /// <param name="sortMode"></param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Forum.PostSearchResponse>> GetPostsThreadedPagedFromChild(
         long childPostId,
@@ -137,6 +144,7 @@ internal sealed class ForumApi : IForumApi
         bool rootThreadMode,
         Models.Forum.ForumPostSortEnum sortMode,
         string showbanned,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -145,7 +153,7 @@ internal sealed class ForumApi : IForumApi
             .Append($"/Forum/GetPostsThreadedPagedFromChild/{childPostId}/{page}/{pageSize}/{replySize}/{rootThreadMode}/{sortMode}/")
             .AddQueryParam("showbanned", showbanned)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -153,10 +161,12 @@ internal sealed class ForumApi : IForumApi
     /// </summary>
     /// <param name="childPostId"></param>
     /// <param name="showbanned">If this value is not null or empty, banned posts are requested to be returned</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Forum.PostSearchResponse>> GetPostAndParent(
         long childPostId,
         string showbanned,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -165,7 +175,7 @@ internal sealed class ForumApi : IForumApi
             .Append($"/Forum/GetPostAndParent/{childPostId}/")
             .AddQueryParam("showbanned", showbanned)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -173,10 +183,12 @@ internal sealed class ForumApi : IForumApi
     /// </summary>
     /// <param name="childPostId"></param>
     /// <param name="showbanned">If this value is not null or empty, banned posts are requested to be returned</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Forum.PostSearchResponse>> GetPostAndParentAwaitingApproval(
         long childPostId,
         string showbanned,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -185,16 +197,18 @@ internal sealed class ForumApi : IForumApi
             .Append($"/Forum/GetPostAndParentAwaitingApproval/{childPostId}/")
             .AddQueryParam("showbanned", showbanned)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Gets the post Id for the given content item's comments, if it exists.
     /// </summary>
     /// <param name="contentId"></param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<long>> GetTopicForContent(
         long contentId,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -202,16 +216,18 @@ internal sealed class ForumApi : IForumApi
             .GetBuilder(cancellationToken)
             .Append($"/Forum/GetTopicForContent/{contentId}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<long>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<long>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Gets tag suggestions based on partial text entry, matching them with other tags previously used in the forums.
     /// </summary>
     /// <param name="partialtag">The partial tag input to generate suggestions from.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Tags.Models.Contracts.TagResponse[]>> GetForumTagSuggestions(
         string partialtag,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -219,16 +235,18 @@ internal sealed class ForumApi : IForumApi
             .GetBuilder(cancellationToken)
             .AddQueryParam("partialtag", partialtag)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Tags.Models.Contracts.TagResponse[]>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Tags.Models.Contracts.TagResponse[]>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Gets the specified forum poll.
     /// </summary>
     /// <param name="topicId">The post id of the topic that has the poll.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Forum.PostSearchResponse>> GetPoll(
         long topicId,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -236,16 +254,18 @@ internal sealed class ForumApi : IForumApi
             .GetBuilder(cancellationToken)
             .Append($"/Forum/Poll/{topicId}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Allows the caller to get a list of to 25 recruitment thread summary information objects.
     /// </summary>
     /// <param name="requestBody">Request body</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Forum.ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(
         long[] requestBody,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -253,7 +273,7 @@ internal sealed class ForumApi : IForumApi
         await _serializer.SerializeAsync(stream, requestBody);
         stream.Position = 0;
 
-        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<Models.Forum.ForumRecruitmentDetail[]>("/Forum/Recruit/Summaries/", cancellationToken, stream);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<Models.Forum.ForumRecruitmentDetail[]>("/Forum/Recruit/Summaries/", cancellationToken, stream, authToken: authorizationToken?.AccessToken);
     }
 
 }

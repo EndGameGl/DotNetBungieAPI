@@ -22,7 +22,7 @@ internal sealed class SocialApi : ISocialApi
         IBungieNetJsonSerializer serializer
     )
     {
-        _configuration = _configuration;
+        _configuration = configuration;
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;
     }
@@ -33,7 +33,7 @@ internal sealed class SocialApi : ISocialApi
     /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Social.Friends.BungieFriendListResponse>> GetFriendList(
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -49,7 +49,7 @@ internal sealed class SocialApi : ISocialApi
     /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Social.Friends.BungieFriendRequestListResponse>> GetFriendRequestList(
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -67,7 +67,7 @@ internal sealed class SocialApi : ISocialApi
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<bool>> IssueFriendRequest(
         string membershipId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -89,7 +89,7 @@ internal sealed class SocialApi : ISocialApi
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<bool>> AcceptFriendRequest(
         string membershipId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -111,7 +111,7 @@ internal sealed class SocialApi : ISocialApi
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<bool>> DeclineFriendRequest(
         string membershipId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -133,7 +133,7 @@ internal sealed class SocialApi : ISocialApi
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<bool>> RemoveFriend(
         string membershipId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -155,7 +155,7 @@ internal sealed class SocialApi : ISocialApi
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<bool>> RemoveFriendRequest(
         string membershipId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -174,10 +174,12 @@ internal sealed class SocialApi : ISocialApi
     /// </summary>
     /// <param name="friendPlatform">The platform friend type.</param>
     /// <param name="page">The zero based page to return. Page size is 100.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Social.Friends.PlatformFriendResponse>> GetPlatformFriendList(
         Models.Social.Friends.PlatformFriendType friendPlatform,
         string page,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -185,7 +187,7 @@ internal sealed class SocialApi : ISocialApi
             .GetBuilder(cancellationToken)
             .Append($"/Social/PlatformFriends/{friendPlatform}/{page}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Social.Friends.PlatformFriendResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Social.Friends.PlatformFriendResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
 }

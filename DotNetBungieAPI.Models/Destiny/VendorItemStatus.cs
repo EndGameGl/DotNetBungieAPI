@@ -29,6 +29,9 @@ public enum VendorItemStatus : int
 
     SellingInhibited = 2048,
 
+    /// <summary>
+    ///     DEPRECATED - Owned items use the NoUnlock state and a failure string indicating the proper display state.
+    /// </summary>
     AlreadyOwned = 4096,
 
     DisplayOnly = 8192

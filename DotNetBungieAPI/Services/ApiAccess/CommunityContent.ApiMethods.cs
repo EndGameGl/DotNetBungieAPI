@@ -22,7 +22,7 @@ internal sealed class CommunityContentApi : ICommunityContentApi
         IBungieNetJsonSerializer serializer
     )
     {
-        _configuration = _configuration;
+        _configuration = configuration;
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;
     }
@@ -33,11 +33,13 @@ internal sealed class CommunityContentApi : ICommunityContentApi
     /// <param name="mediaFilter">The type of media to get</param>
     /// <param name="page">Zero based page</param>
     /// <param name="sort">The sort mode.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Forum.PostSearchResponse>> GetCommunityContent(
         Models.Forum.ForumTopicsCategoryFiltersEnum mediaFilter,
         int page,
         Models.Forum.CommunityContentSortMode sort,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -45,7 +47,7 @@ internal sealed class CommunityContentApi : ICommunityContentApi
             .GetBuilder(cancellationToken)
             .Append($"/CommunityContent/Get/{sort}/{mediaFilter}/{page}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Forum.PostSearchResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
 }

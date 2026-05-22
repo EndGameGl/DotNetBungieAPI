@@ -24,6 +24,9 @@ public sealed class DestinyProgressionDisplayPropertiesDefinition
     [JsonPropertyName("icon")]
     public string Icon { get; init; }
 
+    [JsonPropertyName("iconHash")]
+    public DefinitionHashPointer<Destiny.Definitions.Inventory.DestinyIconDefinition> IconHash { get; init; }
+
     [JsonPropertyName("iconSequences")]
     public Destiny.Definitions.Common.DestinyIconSequenceDefinition[]? IconSequences { get; init; }
 

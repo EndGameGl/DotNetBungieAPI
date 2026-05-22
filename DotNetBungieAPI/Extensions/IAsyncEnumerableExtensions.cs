@@ -18,7 +18,7 @@ public static class IAsyncEnumerableExtensions
         var hasMoreToGet = true;
         while (currentPage < maxPages && hasMoreToGet)
         {
-            var response = await socialMethodsAccess.GetPlatformFriendList(friendPlatform, currentPage.ToString(), cancellationToken);
+            var response = await socialMethodsAccess.GetPlatformFriendList(friendPlatform, currentPage.ToString(), cancellationToken: cancellationToken);
 
             if (!response.IsSuccessfulResponseCode || response.Response is null)
                 throw response.ToException();

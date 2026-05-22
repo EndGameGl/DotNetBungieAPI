@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.OpenApi.Models.ComponentSchemas;
 public class OpenApiEnumComponentSchema : IOpenApiComponentSchema, IHasDescription
 {
     [JsonPropertyName("enum")]
-    public required string[] Enum { get; init; }
+    public required long[] Enum { get; init; }
 
     [JsonPropertyName("type")]
     public required string Type { get; init; }

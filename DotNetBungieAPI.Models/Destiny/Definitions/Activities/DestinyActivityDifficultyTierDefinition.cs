@@ -11,9 +11,6 @@ public sealed class DestinyActivityDifficultyTierDefinition : IDisplayProperties
     [JsonPropertyName("fixedActivitySkulls")]
     public Destiny.Definitions.Activities.DestinyActivitySkull[]? FixedActivitySkulls { get; init; }
 
-    [JsonPropertyName("tierEnabledUnlockExpression")]
-    public Destiny.Definitions.DestinyUnlockExpressionDefinition? TierEnabledUnlockExpression { get; init; }
-
     [JsonPropertyName("tierType")]
     public Destiny.DestinyActivityDifficultyTierType TierType { get; init; }
 

@@ -7,7 +7,7 @@ public interface IFireteamApi
 {
     Task<BungieResponse<int>> GetActivePrivateClanFireteamCount(
         long groupId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -21,7 +21,7 @@ public interface IFireteamApi
         Models.Fireteam.FireteamSlotSearch slotFilter,
         bool excludeImmediate,
         string langFilter,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -33,7 +33,7 @@ public interface IFireteamApi
         Models.Fireteam.FireteamSlotSearch slotFilter,
         bool excludeImmediate,
         string langFilter,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -44,14 +44,14 @@ public interface IFireteamApi
         Models.Fireteam.FireteamPlatform platform,
         bool groupFilter,
         string langFilter,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.Fireteam.FireteamResponse>> GetClanFireteam(
         long fireteamId,
         long groupId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 

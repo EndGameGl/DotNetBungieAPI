@@ -11,9 +11,6 @@ public sealed class DestinyLinkedGraphDefinition
     [JsonPropertyName("name")]
     public string Name { get; init; }
 
-    [JsonPropertyName("unlockExpression")]
-    public Destiny.Definitions.DestinyUnlockExpressionDefinition? UnlockExpression { get; init; }
-
     [JsonPropertyName("linkedGraphId")]
     public uint LinkedGraphId { get; init; }
 
